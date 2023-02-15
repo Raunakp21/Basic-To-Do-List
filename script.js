@@ -8,21 +8,25 @@ add.addEventListener("click", addTodo);
 
 //Functions
 function addTodo(e) {
-  const inputTodo = document.createElement("input");
-  inputTodo.classList.add("inputTodo");
-  inputTodo.value = input.value;
-  const removeTodo = document.createElement("button");
-  removeTodo.classList.add("removeTodo");
-  removeTodo.innerText = "REMOVE";
-  removeTodo.addEventListener("click", removeTodoFn);
+  if (input.value == "" || input.value == "Todo cannot be empty") {
+    input.value = "Todo cannot be empty";
+  } else {
+    const inputTodo = document.createElement("input");
+    inputTodo.classList.add("inputTodo");
+    inputTodo.value = input.value;
+    const removeTodo = document.createElement("button");
+    removeTodo.classList.add("removeTodo");
+    removeTodo.innerText = "REMOVE";
+    removeTodo.addEventListener("click", removeTodoFn);
 
-  const todoDiv = document.createElement("div");
-  todoDiv.classList.add("todoBox");
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todoBox");
 
-  todoDiv.appendChild(inputTodo);
-  todoDiv.appendChild(removeTodo);
-  todoContainer.appendChild(todoDiv);
-  input.value = "";
+    todoDiv.appendChild(inputTodo);
+    todoDiv.appendChild(removeTodo);
+    todoContainer.appendChild(todoDiv);
+    input.value = "";
+  }
 }
 
 function removeTodoFn(e) {
